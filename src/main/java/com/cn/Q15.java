@@ -27,6 +27,8 @@ public class Q15 {
     // 3。如果和小于0，说明左指针指的数小，左指针右移
     // 4。如果相邻元素有重复值，跳过
     //
+    // 问题：为什么找到符合条件的三数后，左右指针都前进？
+    //
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(nums);  // 排序
