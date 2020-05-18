@@ -27,6 +27,8 @@ public class Q21 {
      * 2 单次递归做什么
      * 3 输入什么，返回什么
      *
+     * 问题：递归算法会无限循环，暂时没有找到问题
+     *
      */
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
