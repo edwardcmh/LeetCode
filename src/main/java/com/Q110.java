@@ -38,6 +38,12 @@ public class Q110 {
      *  4   4
      * 返回 false 。
      *
+     * 解法1：从顶至底（时间复杂度高）
+     *
+     * 解法2：从底至顶（最优解）
+     *
+     *
+     *
      */
 
     public boolean isBalanced(TreeNode root) {
@@ -54,6 +60,26 @@ public class Q110 {
         return Math.max(depth(node.left), depth(node.right)) + 1;
     }
 
+
+    public boolean isBalanced2(TreeNode root) {
+        return recur(root) != -1;
+    }
+
+    public int recur(TreeNode node) {
+        if (node == null)   // 递归终止条件，返回高度0
+            return 0;
+        // 如果左右子树里有一个不平衡，则父节点都不平衡，返回不平衡-1
+        int left = recur(node.left);
+        if (left == -1)
+            return -1;
+        int right = recur(node.right);
+        if (right == -1)
+            return -1;
+        // 如果左右子树高度相差小于2，返回较大的高度
+        return Math.abs(left - right) < 2 ? Math.max(left, right) + 1 : -1;
+    }
+
+
     public static void main(String[] args) {
 //        Integer[] arr = {3, 9, 20, null, null, 15, 7};
         Integer[] arr = {1, 2, 2, 3, 3, null, null, 4, 4};
@@ -61,6 +87,7 @@ public class Q110 {
         t.traverse();
         Q110 q = new Q110();
         System.out.println(q.isBalanced(t.root));
+        System.out.println(q.isBalanced2(t.root));
 
     }
 }
